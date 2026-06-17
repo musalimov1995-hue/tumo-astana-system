@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from 'react'
+import React, { useEffect, Component, useState } from 'react'
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
 
 import Home from './pages/Home.jsx'
@@ -28,12 +28,19 @@ class ErrorBoundary extends Component {
 
 function TopBar() {
   const location = useLocation()
+  const [open, setOpen] = useState(false)
+
+  // Hide topbar entirely on /app route on mobile (app takes full screen)
+  if (location.pathname === '/app') return null
+
   return (
     <header className="topbar">
-      <Link to="/" className="topbar-brand">
+      <Link to="/" className="topbar-brand" onClick={() => setOpen(false)}>
         <span className="topbar-mark" />
         TUMO Astana
       </Link>
+
+      {/* Desktop nav */}
       <nav className="topbar-nav">
         <Link to="/apply">Подать заявку</Link>
         <Link to="/status">Статус заявки</Link>
@@ -42,6 +49,25 @@ function TopBar() {
         <Link to="/face-concept">Концепт турникета</Link>
         <Link to="/app" style={{ color: '#B873E0', fontWeight: 700 }}>📱 Приложение</Link>
       </nav>
+
+      {/* Burger button (mobile only) */}
+      <button className="topbar-burger" onClick={() => setOpen((v) => !v)} aria-label="Меню">
+        <span className={`topbar-burger-line ${open ? 'open-1' : ''}`} />
+        <span className={`topbar-burger-line ${open ? 'open-2' : ''}`} />
+        <span className={`topbar-burger-line ${open ? 'open-3' : ''}`} />
+      </button>
+
+      {/* Mobile dropdown */}
+      {open && (
+        <nav className="topbar-mobile-menu">
+          <Link to="/apply"        onClick={() => setOpen(false)}>Подать заявку</Link>
+          <Link to="/status"       onClick={() => setOpen(false)}>Статус заявки</Link>
+          <Link to="/curator"      onClick={() => setOpen(false)}>Кураторам</Link>
+          <Link to="/admin"        onClick={() => setOpen(false)}>Админ-панель</Link>
+          <Link to="/face-concept" onClick={() => setOpen(false)}>Концепт турникета</Link>
+          <Link to="/app"          onClick={() => setOpen(false)} style={{ color: '#B873E0', fontWeight: 700 }}>📱 Приложение</Link>
+        </nav>
+      )}
     </header>
   )
 }
