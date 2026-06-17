@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Users/almasmusalimov/Downloads/tumo-system 2/src/mobile\")",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(curl -s http://localhost:5174/#/app)",
+      "Bash(npx vite *)",
+      "Bash(node -e ' *)",
+      "Bash(sips --version)",
+      "Bash(rsvg-convert --version)",
+      "Bash(python3 -c ' *)",
+      "Bash(npm install *)"
+    ],
+    "additionalDirectories": [
+      "/Users/almasmusalimov/Downloads/tumo-system 2/src"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "TUMO Astana",
+  "short_name": "TUMO",
+  "description": "Регистрация и онбординг учеников TUMO Center Astana",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#B873E0",
+  "orientation": "portrait",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
